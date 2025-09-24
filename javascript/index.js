@@ -1,5 +1,6 @@
 function updateTime() {
 let losAngelesElement = document.querySelector("#los-angeles");
+if (losAngelesElement) {
 let losAngelesDateElement = losAngelesElement.querySelector(".date");
 let losAngelesTimeElement = losAngelesElement.querySelector(".time");
 losAngelesDateElement.innerHTML = moment()
@@ -8,8 +9,10 @@ losAngelesDateElement.innerHTML = moment()
 losAngelesTimeElement.innerHTML = moment()
   .tz("America/Los_Angeles")
   .format("h:mm:ss [<small>]A[</small>]");
-  
+}
+
 let parisElement = document.querySelector("#paris");
+if (parisElement) {
 let parisDateElement = parisElement.querySelector(".date");
 let parisTimeElement = parisElement.querySelector(".time");
 parisDateElement.innerHTML = moment()
@@ -18,10 +21,8 @@ parisDateElement.innerHTML = moment()
 parisTimeElement.innerHTML = moment()
   .tz("Europe/Paris")
   .format("h:mm:ss [<small>]A[</small>]");
-
+ }
 }
-updateTime();
-setInterval(updateTime, 1000);
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
@@ -40,5 +41,8 @@ function updateCity(event) {
 `;
 }
 
-let citySelectElement=document.querySelector("#city");
-citySelectElement.addEventListener("change", updateCity);
+updateTime();
+setInterval(updateTime, 1000);
+
+let citiesSelectElement=document.querySelector("#city");
+citiesSelectElement.addEventListener("change", updateCity);
